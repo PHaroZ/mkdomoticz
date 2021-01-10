@@ -22,8 +22,8 @@ RUN apt-get update && apt-get install -y \
 RUN apt-get update && apt-get install -y \
         liblua5.2-dev
 
-COPY scripts /scripts
-RUN bash /scripts/cmaker
+COPY scripts/cmaker.sh /scripts/cmaker.sh
+RUN bash /scripts/cmaker.sh
 
 
 ## Domoticz installation
@@ -49,7 +49,7 @@ VOLUME /config
 
 EXPOSE 8080
 
-COPY start.sh /start.sh
+COPY scripts/start.sh /start.sh
 
 #ENTRYPOINT ["/src/domoticz/domoticz", "-dbase", "/config/domoticz.db", "-log", "/config/domoticz.log"]
 #CMD ["-www", "8080"]
