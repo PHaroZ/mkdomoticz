@@ -15,7 +15,7 @@ jobs:
       -
         name: Get current date
         id: date
-        run: echo "name=$(date +'%Y%m%d')" >> $GITHUB_ENV
+        run: echo "DATE_VERSION=$(date +'%Y%m%d')" >> $GITHUB_ENV
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
@@ -35,7 +35,7 @@ jobs:
         with:
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: pharoz/domoticz:latest,pharoz/domoticz:${{ steps.date.outputs.date }}
+          tags: pharoz/domoticz:latest,pharoz/domoticz:${{ env.DATE_VERSION }}
       -
         name: Update repo description
         uses: peter-evans/dockerhub-description@v2
